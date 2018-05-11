@@ -5,67 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="w3.css"/>
+    <link rel="import" href="tem/login.t.html">
     <script src="jquery.min.js"></script>
+    <!-- <script src="webcomponents-loader.js"></script> -->
 </head>
 <body class="w3-content">
-    <section class="w3-container">
-        <div class="w3-container ">
-            <form class="w3-card w3-display-middle w3-col l5 s10" id="login">
-                <h2 class="w3-content w3-black w3-center">&UpEquilibrium;  Login  </h2>
-                <input class="w3-input" type="email" name="email" placeholder="Email" required/>
-                <input class="w3-input" type="password" name="password" placeholder="Password" required/>
-                <input class="w3-input w3-teal" type="submit" name="submit" value="continue" />
-                <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
-                <a class="w3-btn w3-red w3-col l4" >Reset Password</a>
-                <a class="w3-btn w3-green w3-col l4" >Register Account</a>
-            </form>
-            <form class="w3-card w3-display-middle w3-col l5 s10" id="register">
-                <h2 class="w3-content w3-black w3-center">&Equilibrium; Register  </h2>
-                <input class="w3-input w3-col l6" type="text" name="name" placeholder="Name">
-                <input class="w3-input w3-col l6" type="text" name="name" placeholder="MiddleName">
-                <input class="w3-input"type="text" name="name" placeholder="Surname">
-                <input class="w3-input" type="email" name="email" placeholder="Email"/>
-                <input class="w3-input" type="password" name="password" placeholder="Password"/>
-                <input class="w3-input w3-teal" type="submit" name="submit" value="submit" />
-                <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
-                <a class="w3-btn w3-red w3-col l4" >Reset Password</a>
-                <a class="w3-btn w3-green w3-col l4" >Already a User</a>
-            </form>
-            <form class="w3-card w3-display-middle w3-col l5 s10" id="recover">
-                <h2 class="w3-content w3-black w3-center">&RightTeeVector;  Reset Password  </h2>
-                <input class="w3-input" type="email" name="email" placeholder="Email"/>
-                <input class="w3-input w3-teal" type="submit" name="submit" value="submit" />
-                <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
-                <a class="w3-btn w3-red w3-col l4" >Login</a>
-                <a class="w3-btn w3-green w3-col l4" >Register</a>
-            </form>
-        </div>
-    </section>
+    <cust-login></cust-login>
     <script>
-        $(document).ready(function(){
-            if (window.location.hash === ""){
-                window.location.hash ="#register";
-            }else{
-                formsSPA();
+        var shadow = {};
+        class CustLogin extends HTMLElement{
+            constructor(){
+                super();
+                var imprt = document.querySelector("link[rel='import']");
+                var template = imprt.import.querySelector("template");
+                var content = template.content;
+                    // console.log(t);
+                shadow = this.attachShadow({mode:"open"});
+                shadow.appendChild(content.cloneNode(true));
+                // console.log(shadow.isConnected);
             }
-            $(window).on(
-                "hashchange",
-                function(e){
+            static get is(){return "cust-login"}
+
+        }
+        customElements.define(CustLogin.is,CustLogin);
+    </script>
+    <script>
+            $(document).ready(function(){
+                if (window.location.hash === ""){
+                    window.location.hash ="#register";
+                }else{
                     formsSPA();
                 }
-            );
-        });
-        function formsSPA(){
-            $("form").each(
-                function(id,form){
-                    var hashLocation = window.location.hash.substr(1,window.location.hash.length);
-                    if (form.id === hashLocation)
-                        $(form).fadeIn("fast");
-                    else
-                        $(form).hide("");
-                }
-            );
-        }
-    </script>
+                $(window).on(
+                    "hashchange",
+                    function(e){
+                        formsSPA();
+                    }
+                );
+            });
+            function formsSPA(){
+                var forms = shadow.querySelectorAll("form");
+                $(forms).each(
+                    function(id,form){
+                        var hashLocation = window.location.hash.substr(1,window.location.hash.length);
+                        if (form.id === hashLocation)
+                            $(form).fadeIn("fast");
+                        else
+                            $(form).hide("");
+                    }
+                );
+            }
+            
+        </script>
 </body>
 </html>
