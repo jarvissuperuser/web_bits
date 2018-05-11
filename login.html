@@ -5,57 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="w3.css"/>
-    <link rel="import" href="tem/login.t.html">
+    <link rel="import" href="tem/auth-element.html">
     <script src="jquery.min.js"></script>
     <!-- <script src="webcomponents-loader.js"></script> -->
 </head>
 <body class="w3-content">
-    <cust-login></cust-login>
+    <auth-element></auth-element>
     <script>
         var shadow = {};
-        class CustLogin extends HTMLElement{
-            constructor(){
-                super();
-                var imprt = document.querySelector("link[rel='import']");
-                var template = imprt.import.querySelector("template");
-                var content = template.content;
-                    // console.log(t);
-                shadow = this.attachShadow({mode:"open"});
-                shadow.appendChild(content.cloneNode(true));
-                // console.log(shadow.isConnected);
-            }
-            static get is(){return "cust-login"}
-
-        }
-        customElements.define(CustLogin.is,CustLogin);
     </script>
-    <script>
-            $(document).ready(function(){
-                if (window.location.hash === ""){
-                    window.location.hash ="#register";
-                }else{
-                    formsSPA();
-                }
-                $(window).on(
-                    "hashchange",
-                    function(e){
-                        formsSPA();
-                    }
-                );
-            });
-            function formsSPA(){
-                var forms = shadow.querySelectorAll("form");
-                $(forms).each(
-                    function(id,form){
-                        var hashLocation = window.location.hash.substr(1,window.location.hash.length);
-                        if (form.id === hashLocation)
-                            $(form).fadeIn("fast");
-                        else
-                            $(form).hide("");
-                    }
-                );
-            }
-            
-        </script>
+    <script src="auth-element.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

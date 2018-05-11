@@ -1,17 +1,17 @@
 
-<template id="cust-login">
-    <script src="/custom_webbits/jquery.min.js"></script>
-    <link rel="stylesheet" href="/custom_webbits/w3.css">
+<template id="auth-element">
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="w3.css">
     <section class="w3-container">
-            <div class="w3-container w3-display-middle w3-col l5 s10">
+            <div class="w3-container w3-display-middle w3-col l5 s12">
                 <form class="w3-card " id="login">
                     <h2 class="w3-content w3-black w3-center">&UpEquilibrium;  Login  </h2>
                     <input class="w3-input" type="email" name="email" placeholder="Email" required/>
                     <input class="w3-input" type="password" name="password" placeholder="Password" required/>
                     <input class="w3-input w3-teal" type="submit" name="submit" value="continue" />
                     <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
-                    <a class="w3-btn w3-red w3-col l4" >Reset Password</a>
-                    <a class="w3-btn w3-green w3-col l4" >Register Account</a>
+                    <a class="w3-btn w3-red w3-col l4" href="#recover">Reset Password</a>
+                    <a class="w3-btn w3-green w3-col l4" href="#register" >Register Account</a>
                 </form>
                 <form class="w3-card " id="register">
                     <h2 class="w3-content w3-black w3-center">&Equilibrium; Register  </h2>
@@ -22,16 +22,16 @@
                     <input class="w3-input" type="password" name="password" placeholder="Password"/>
                     <input class="w3-input w3-teal" type="submit" name="submit" value="submit" />
                     <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
-                    <a class="w3-btn w3-red w3-col l4" >Reset Password</a>
-                    <a class="w3-btn w3-green w3-col l4" >Already a User</a>
+                    <a class="w3-btn w3-red w3-col l4" href="#recover">Reset Password</a>
+                    <a class="w3-btn w3-green w3-col l4" href="#login">Already a User</a>
                 </form>
                 <form class="w3-card " id="recover">
                     <h2 class="w3-content w3-black w3-center">&RightTeeVector;  Reset Password  </h2>
                     <input class="w3-input" type="email" name="email" placeholder="Email"/>
                     <input class="w3-input w3-teal" type="submit" name="submit" value="submit" />
                     <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
-                    <a class="w3-btn w3-red w3-col l4" >Login</a>
-                    <a class="w3-btn w3-green w3-col l4" >Register</a>
+                    <a class="w3-btn w3-red w3-col l4" href="#login">Login</a>
+                    <a class="w3-btn w3-green w3-col l4" href="#register">Register</a>
                 </form>
             </div>
         </section>
