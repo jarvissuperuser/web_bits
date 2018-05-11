@@ -1,0 +1,53 @@
+
+<template id="cust-login">
+    <script src="/custom_webbits/jquery.min.js"></script>
+    <link rel="stylesheet" href="/custom_webbits/w3.css">
+    <section class="w3-container">
+            <div class="w3-container w3-display-middle w3-col l5 s10">
+                <form class="w3-card " id="login">
+                    <h2 class="w3-content w3-black w3-center">&UpEquilibrium;  Login  </h2>
+                    <input class="w3-input" type="email" name="email" placeholder="Email" required/>
+                    <input class="w3-input" type="password" name="password" placeholder="Password" required/>
+                    <input class="w3-input w3-teal" type="submit" name="submit" value="continue" />
+                    <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
+                    <a class="w3-btn w3-red w3-col l4" >Reset Password</a>
+                    <a class="w3-btn w3-green w3-col l4" >Register Account</a>
+                </form>
+                <form class="w3-card " id="register">
+                    <h2 class="w3-content w3-black w3-center">&Equilibrium; Register  </h2>
+                    <input class="w3-input w3-col l6" type="text" name="name" placeholder="Name">
+                    <input class="w3-input w3-col l6" type="text" name="name" placeholder="MiddleName">
+                    <input class="w3-input"type="text" name="name" placeholder="Surname">
+                    <input class="w3-input" type="email" name="email" placeholder="Email"/>
+                    <input class="w3-input" type="password" name="password" placeholder="Password"/>
+                    <input class="w3-input w3-teal" type="submit" name="submit" value="submit" />
+                    <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
+                    <a class="w3-btn w3-red w3-col l4" >Reset Password</a>
+                    <a class="w3-btn w3-green w3-col l4" >Already a User</a>
+                </form>
+                <form class="w3-card " id="recover">
+                    <h2 class="w3-content w3-black w3-center">&RightTeeVector;  Reset Password  </h2>
+                    <input class="w3-input" type="email" name="email" placeholder="Email"/>
+                    <input class="w3-input w3-teal" type="submit" name="submit" value="submit" />
+                    <button class="w3-input w3-blue w3-col l4" type="reset">clear</button>
+                    <a class="w3-btn w3-red w3-col l4" >Login</a>
+                    <a class="w3-btn w3-green w3-col l4" >Register</a>
+                </form>
+            </div>
+        </section>
+</template>
+<!-- <script>
+    class CustLogin extends HTMLElement{
+        constructor(){
+            super();
+            var template = $("#cust-login");
+            // var content = template.content;
+             console.log(template);
+            // const shadow = this.attachShadow({mode:"open"});
+            // shadow.appendChild(content.cloneNode(true));
+            // console.log(shadow.isConnected);
+        }
+        static get is(){return "cust-login"}
+    }
+    customElements.define(CustLogin.is,CustLogin);
+</script> -->
