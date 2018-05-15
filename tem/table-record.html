@@ -1,0 +1,29 @@
+<link rel="import" href="table-data.html">
+<template id="table-record">
+    <tr>
+        {{td}}
+    </tr>
+    <script >
+        var register;
+        class TableData extends HTMLElement{
+            constructor(){
+                super();
+                register = this.shadowDeclare();
+            }
+            static get is(){
+                return "table-data";
+
+            }
+            shadowDeclare(){
+                var imprt = document.querySelector("link[rel='import']");
+                var template = imprt.import.querySelector("template");
+                var content = template.content;
+                var point = this.attachShadow({mode:"open"});
+                point.appendChild(content.cloneNode(true));
+                return point;
+            }
+        }
+        customElements.define(TableData.is,TableData);
+        if
+    </script>
+</template>
