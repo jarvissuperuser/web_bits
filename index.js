@@ -48,7 +48,8 @@ var root = {
     logged:{
         uid:1,
         AUTH:"Session"
-    }
+    },
+    tableHideList:[2,4,5]
 }
 $(document).ready(function(){
     if (window.location.hash === ""){
@@ -93,20 +94,23 @@ function tableCreate(data,depth){
         var row = header.insertRow(0);
         for(key in data[0]){
             var cell = row.insertCell(rowCount++);
-            cell.innerHTML = valueProcessor(undefined,key).bold();
+            cell.innerHTML = valueProcessor(undefined,key).toUpperCase().bold();
             cell.style.padding = "10px 30px 10px ";
+            if (hideCell(rowCount)){
+                cell.classList.add("w3-hide-small");
+            }
         };
         data.forEach(function(entry,key){
             row  = table.insertRow(key+1);
             var rowExtract = data[key];
             var count = 0;
             for(p in rowExtract){
-                console.log(count);
                 var cell = row.insertCell(count++);
                 cell.innerHTML = valueProcessor(rowExtract[p],p);
+                if (hideCell(count)){
+                    cell.classList.add("w3-hide-small");
+                }
             }
-            $(row).get().reverse();
-            
         });
 //         console.log(table);
         
@@ -132,4 +136,12 @@ function valueProcessor(str,key){
         default:
             return str?str:key;
     }
+}
+function hideCell(num){
+    var a = false;
+    root.tableHideList.some(function(entry,key){
+        a = entry === num;
+        return  a;
+    });
+    return a;
 }
