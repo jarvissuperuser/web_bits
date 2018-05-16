@@ -112,20 +112,12 @@ function tableCreate(data,depth){
                 }
             }
         });
-//         console.log(table);
-        
-//         var cell = row.insertCell(0);
-//         cell.innerHTML = "<b>T</b>";
-//         var cell1 = row.insertCell(1);
-//         cell1.innerHTML = "<b>T3xt3syhuitdoidofa</b>";
         table.style.borderSpacing = 0;
         header.style = "background-color:black;color:white";
-        
-        //cell1.style.padding = "10px 30px 10px ";
         table.style.whiteSpace = "normal";
-        document.getElementById("data").appendChild(table.cloneNode(true));
+        //document.getElementById("data").appendChild(table.cloneNode(true));
+        $("#data").html(table);
     }
-    
 }
 function valueProcessor(str,key){
     switch(key){
