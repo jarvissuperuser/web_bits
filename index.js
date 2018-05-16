@@ -84,7 +84,7 @@ function formsSPA(){
         }
     );
 }
-function tableCreate(data,depth){
+ function tableCreate(data,depth){
     //$("#data").empty();
     if (data){
         var table = document.createElement("table");;
@@ -115,10 +115,9 @@ function tableCreate(data,depth){
         table.style.borderSpacing = 0;
         header.style = "background-color:black;color:white";
         table.style.whiteSpace = "normal";
-        //document.getElementById("data").appendChild(table.cloneNode(true));
         $("#data").html(table);
         $("td").on("click",function(){
-            var val = $(this).parent().find(":nth-child(2)").text();
+            var val = $(this).parent().find(":nth-child("+ depth +")").text();
             console.log(val);
         });
     }
