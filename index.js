@@ -85,7 +85,7 @@ function formsSPA(){
     );
 }
 function tableCreate(data,depth){
-    $("#data").empty();
+    //$("#data").empty();
     if (data){
         var table = document.createElement("table");;
         var header = table.createTHead();
@@ -117,6 +117,10 @@ function tableCreate(data,depth){
         table.style.whiteSpace = "normal";
         //document.getElementById("data").appendChild(table.cloneNode(true));
         $("#data").html(table);
+        $("td").on("click",function(){
+            var val = $(this).parent().find(":nth-child(2)").text();
+            console.log(val);
+        });
     }
 }
 function valueProcessor(str,key){
