@@ -61,6 +61,7 @@ $(document).ready(function(){
         "hashchange",
         function(e){
             formsSPA();
+            $('title').text(location.hash.substring(1))
         }
     );
     var forms = root.forms;
@@ -68,7 +69,8 @@ $(document).ready(function(){
         $(form).submit(function (e) {
             e.preventDefault();
             var data = $(form).serializeArray();
-            console.log({form:data,index:idx});
+            // console.log({form:data,index:idx});
+            sendToServer("http://localhost/datasv.php",data);
         }) ;
     });
 });
@@ -76,7 +78,7 @@ function formsSPA(){
     var forms = root.forms;
     $(forms).each(
         function(id,form){
-            var hashLocation = window.location.hash.substr(1,window.location.hash.length);
+            var hashLocation = window.location.hash.substr(1);
             if (form.id === hashLocation)
                 $(form).fadeIn("fast");
             else
@@ -112,12 +114,6 @@ function tableCreate(data,depth){
                 }
             }
         });
-//         console.log(table);
-        
-//         var cell = row.insertCell(0);
-//         cell.innerHTML = "<b>T</b>";
-//         var cell1 = row.insertCell(1);
-//         cell1.innerHTML = "<b>T3xt3syhuitdoidofa</b>";
         table.style.borderSpacing = 0;
         header.style = "background-color:black;color:white";
         
@@ -144,4 +140,15 @@ function hideCell(num){
         return  a;
     });
     return a;
+}
+
+function sendToServer(addr,data){
+    var reorgData = {};
+    data.forEach(function (d) {
+        reorgData[d.name] = d.value;
+    });
+    reorgData["submit"] = location.hash.substring(1);
+    $.post(addr,reorgData,function (response) {
+        alert(response);
+    });
 }
