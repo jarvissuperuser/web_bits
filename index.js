@@ -49,7 +49,8 @@ var root = {
         uid:1,
         AUTH:"Session"
     },
-    tableHideList:[2,4,5]
+    tableHideList:[2,4,5],
+    destination:"http://localhost/spf"
 }
 $(document).ready(function(){
     if (window.location.hash === ""){
@@ -68,7 +69,23 @@ $(document).ready(function(){
         $(form).submit(function (e) {
             e.preventDefault();
             var data = $(form).serializeArray();
-            console.log({form:data,index:idx});
+            //console.log({form:data,index:idx});
+            switch (idx){
+                case 0:
+                    data["submit"] = 'login';
+                    post(data);
+                    break;
+                case 1:
+                    data["submit"] = 'add_user';
+                    post(data);
+                    break;
+                case 2:
+                    data["submit"] = 'reset_password';
+                    post(data);
+                    break;
+                default:
+                    alert("Big error")
+            }
         }) ;
     });
 });
@@ -139,4 +156,9 @@ function hideCell(num){
         return  a;
     });
     return a;
+}
+function post(data) {
+    $.post(root.destination,data,function (res) {
+        console.log(res);
+    });
 }
