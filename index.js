@@ -50,7 +50,7 @@ var root = {
         AUTH:"Session"
     },
     tableHideList:[2,4,5],
-    destination:"http://localhost/spf"
+    destination:"http://localhost/sqlite_php_framework/"
 }
 $(document).ready(function(){
     if (window.location.hash === ""){
@@ -70,20 +70,23 @@ $(document).ready(function(){
         $(form).submit(function (e) {
             e.preventDefault();
             var data = $(form).serializeArray();
-
+            var well_dressed = {};
+            data.forEach(function(element){
+                well_dressed[element.name] = element.value;
+            });
             //console.log({form:data,index:idx});
             switch (idx){
                 case 0:
-                    data["submit"] = 'login';
-                    post(data);
+                    well_dressed["submit"] = 'login';
+                    post(well_dressed);
                     break;
                 case 1:
-                    data["submit"] = 'add_user';
-                    post(data);
+                    well_dressed["submit"] = 'add_user';
+                    post(well_dressed);
                     break;
                 case 2:
-                    data["submit"] = 'reset_password';
-                    post(data);
+                    well_dressed["submit"] = 'reset_password';
+                    post(well_dressed);
                     break;
                 default:
                     alert("Big error")
