@@ -62,6 +62,7 @@ $(document).ready(function(){
         "hashchange",
         function(e){
             formsSPA();
+            $('title').text(location.hash.substring(1))
         }
     );
     var forms = root.forms;
@@ -69,6 +70,7 @@ $(document).ready(function(){
         $(form).submit(function (e) {
             e.preventDefault();
             var data = $(form).serializeArray();
+
             //console.log({form:data,index:idx});
             switch (idx){
                 case 0:
@@ -86,6 +88,10 @@ $(document).ready(function(){
                 default:
                     alert("Big error")
             }
+
+            // console.log({form:data,index:idx});
+            //sendToServer("http://localhost/datasv.php",data);
+
         }) ;
     });
 });
@@ -93,7 +99,7 @@ function formsSPA(){
     var forms = root.forms;
     $(forms).each(
         function(id,form){
-            var hashLocation = window.location.hash.substr(1,window.location.hash.length);
+            var hashLocation = window.location.hash.substr(1);
             if (form.id === hashLocation)
                 $(form).fadeIn("fast");
             else
@@ -157,8 +163,22 @@ function hideCell(num){
     });
     return a;
 }
+
 function post(data) {
     $.post(root.destination,data,function (res) {
         console.log(res);
+    });
+}
+
+
+
+function sendToServer(addr,data){
+    var reorgData = {};
+    data.forEach(function (d) {
+        reorgData[d.name] = d.value;
+    });
+    reorgData["submit"] = location.hash.substring(1);
+    $.post(addr,reorgData,function (response) {
+        alert(response);
     });
 }
