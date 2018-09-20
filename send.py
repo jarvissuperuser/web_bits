@@ -1,3 +1,5 @@
+### This file sends the the project folder to the html localhost folder
+
 from os.path import isdir, exists
 from os import makedirs,mkdir, getcwd, system
 def chkdir(dirloc):
