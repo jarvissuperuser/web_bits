@@ -174,7 +174,9 @@ function post(data) {
 }
 
 
-
+/**
+* function is deprecated.
+*/
 function sendToServer(addr,data){
     var reorgData = {};
     data.forEach(function (d) {
